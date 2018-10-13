@@ -1,2 +1,2 @@
-# Galassia2
-NUS Galassia2 Nanosat Project's code
+# Galassia-2
+NUS Galassia-2 Nanosat Project's code
