@@ -1,2 +1,4 @@
-# Galassia-2
-NUS Galassia-2 Nanosat Project's code
+1. ratetable.py
+2. turn2csv.py
+3. filter.py
+4. LR.py

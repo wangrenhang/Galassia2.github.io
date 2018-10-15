@@ -36,9 +36,9 @@ while True:
     file.write(axis + str(RATELIST[rate-1]) + ' ' + data + '\n')
     print(data)
 
-    step = step + 1
     if step == points:
         step = 0
+    step = step + 1
 
 
 ratetable.write("STO\r\n".encode())
