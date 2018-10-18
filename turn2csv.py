@@ -2,8 +2,8 @@ import csv
 
 # rawFile = open("MPU6050.txt", 'r')
 # csvFile = open("MPU6050.csv", 'w')
-rawFile = open("MPU3300.txt", 'r')
-csvFile = open("MPU3300.csv", 'w')
+rawFile = open("MPU6050_validation.txt", 'r')
+csvFile = open("MPU6050_validation.csv", 'w')
 
 writer = csv.writer(csvFile)
 # Write header first
@@ -29,6 +29,8 @@ while True:
         csvLine.append("E33")
     elif line.find("INT") != -1:
         csvLine.append("INT")
+    elif line.find("Kal") != -1:
+        csvLine.append("Kal")
     else:
         continue
 
