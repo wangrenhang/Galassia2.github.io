@@ -3,8 +3,10 @@
 # 2. Eliminate 10% too large and 10% too small values
 import csv
 
-rawcsv = open("MPU6050.csv", 'r')
-procsv = open("MPU6050_filtered.csv", 'w')
+# rawcsv = open("MPU6050.csv", 'r')
+# procsv = open("MPU6050_filtered.csv", 'w')
+rawcsv = open("MPU3300.csv", 'r')
+procsv = open("MPU3300_filtered.csv", 'w')
 headers = (["Sensor", "Axis", "Angular velocity", "X", "Y", "Z", "Temp"])
 csvwriter = csv.DictWriter(procsv, headers)
 csvwriter.writeheader()

@@ -6,7 +6,8 @@ import csv
 
 X = []
 Y = []
-rawcsv = open("MPU6050_filtered.csv", 'r')
+# rawcsv = open("MPU6050_filtered.csv", 'r')
+rawcsv = open("MPU3300_filtered.csv", 'r')
 csvDict = csv.DictReader(rawcsv)
 # Training data collection
 for line in csvDict:

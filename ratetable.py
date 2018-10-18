@@ -6,8 +6,8 @@ import time
 
 # Angular velocity adopted to calibrate the gyroscope
 RATELIST = [0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1, 2, 3, 4, 6, 8, 10, 15, 20, 25, 30,
-            0, -0.1, -0.2, -0.3, -0.4, -0.6, -0.8, -1, -2, -3, -4, -6, -8, -10, -15, -20, -25, -30]
-# RATELIST = [2, 3, 4, -2]
+           0, -0.1, -0.2, -0.3, -0.4, -0.6, -0.8, -1, -2, -3, -4, -6, -8, -10, -15, -20, -25, -30]
+#RATELIST = [2, 3, 4, -2]
 
 # Obtain 500 points, enough for calibration
 points = 500
@@ -16,7 +16,7 @@ axis = 'Z'
 
 ratetable = serial.Serial('COM16', 9600)
 satellite = serial.Serial('COM3', 38400)
-file = open(r"MPU6050.txt", 'a')
+file = open(r"MPU3300.txt", 'a')
 
 step = 0
 rate = 0
@@ -36,9 +36,9 @@ while True:
     file.write(axis + str(RATELIST[rate-1]) + ' ' + data + '\n')
     print(data)
 
+    step = step + 1
     if step == points:
         step = 0
-    step = step + 1
 
 
 ratetable.write("STO\r\n".encode())

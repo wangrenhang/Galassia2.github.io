@@ -1,7 +1,9 @@
 import csv
 
-rawFile = open("MPU6050.txt", 'r')
-csvFile = open("MPU6050.csv", 'w')
+# rawFile = open("MPU6050.txt", 'r')
+# csvFile = open("MPU6050.csv", 'w')
+rawFile = open("MPU3300.txt", 'r')
+csvFile = open("MPU3300.csv", 'w')
 
 writer = csv.writer(csvFile)
 # Write header first
