@@ -1,5 +1,8 @@
 import csv
 
+counter = 0
+err = 0
+
 rawFile = open("ThermalChamber.txt", 'r')
 fssFile = open("FSS.csv", 'w')
 cstFile = open("CST.csv", 'w')
@@ -25,7 +28,9 @@ gro.writerow(["x", "y", "z", "temp"])
 
 
 def extract(writer, dat, n):
+    global err
     csvLine = []
+    test = dat
 
     for i in range(n):
         index = dat.find(' ')
@@ -46,6 +51,10 @@ def extract(writer, dat, n):
     except ValueError:
         return
 
+    if csvLine[0] < -1000 or csvLine[0] > 1000 or csvLine[1] < -1000 or csvLine[1] > 1000:
+        print(str(counter)+" "+test)
+        err += 1
+
     writer.writerow(csvLine)
 
 # Write row by row
@@ -57,6 +66,9 @@ def extract(writer, dat, n):
 # b'EMG: 373.466675 -197.733322 51.466667 33.843750\r\n'
 # b'GRO: 0.195706 0.552795 -0.014072 19.912354\r\n'
 while True:
+
+    counter = counter + 1
+
     line = rawFile.readline()
     line = str(line)
     # Eliminate polluted data
@@ -123,3 +135,5 @@ csvFile.close()
 imgFile.close()
 emgFile.close()
 groFile.close()
+
+print(err)
