@@ -5,9 +5,9 @@ import serial
 import time
 
 # Angular velocity adopted to calibrate the gyroscope
-RATELIST = [0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1, 2, 3, 4, 6, 8, 10, 15, 20, 25, 30,
-           0, -0.1, -0.2, -0.3, -0.4, -0.6, -0.8, -1, -2, -3, -4, -6, -8, -10, -15, -20, -25, -30]
-#RATELIST = [2, 3, 4, -2]
+# RATELIST = [0, 0.1, 0.2, 0.3, 0.4, 0.6, 0.8, 1, 2, 3, 4, 6, 8, 10, 15, 20, 25, 30,
+#            0, -0.1, -0.2, -0.3, -0.4, -0.6, -0.8, -1, -2, -3, -4, -6, -8, -10, -15, -20, -25, -30]
+RATELIST = [2, 3, 4, -2]
 
 # Obtain 500 points, enough for calibration
 points = 500
