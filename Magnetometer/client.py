@@ -41,14 +41,18 @@ def sockRecv(socket_tcp):
                 else:
                     print(data)
                 continue
+
         except Exception:
             socket_tcp.close()
             socket_tcp = None
             sys.exit(1)
 
+x = []
+y = []
+z = []
 def main():
     global datardy, mgmdata
-    SERVER_IP = "172.23.231.233"
+    SERVER_IP = "172.17.189.33"
     SERVER_PORT = 8888
     print("Starting socket: TCP...")
     server_addr = (SERVER_IP, SERVER_PORT)
@@ -60,12 +64,12 @@ def main():
             socket_tcp.connect(server_addr)
             break
         except Exception:
-            print("Can't connect to server,try it latter!")
+            print("Can't connect to server,try it later!")
             time.sleep(0.1)
             continue
     print("Connection succeeded.")
 
-    _thread.start_new_thread(sockSend, (socket_tcp,))
+    # _thread.start_new_thread(sockSend, (socket_tcp,))
     _thread.start_new_thread(sockRecv, (socket_tcp,))
 
     mgmFile = open("mgm.csv", 'w')
@@ -79,6 +83,23 @@ def main():
             with open("mgm.csv", 'a') as mgmFile:
                 mgm = csv.writer(mgmFile)
                 mgm.writerow(mgmdata)
+
+                # Data visualization
+                mgmFig = plt.figure(1)
+                mgmFig.suptitle("Internal magnetometer", fontsize=16)
+
+                x.append(mgmdata[0])
+                y.append(mgmdata[1])
+                z.append(mgmdata[2])
+                ax = plt.subplot(111, projection='3d')  # 创建一个三维的绘图工程
+                #  将数据点分成三部分画，在颜色上有区分度
+                ax.scatter(x, y, z, c='b')  # 绘制数据点
+
+                ax.set_zlabel('Z')  # 坐标轴
+                ax.set_ylabel('Y')
+                ax.set_xlabel('X')
+
+                plt.pause(0.001)  # 这个为停顿0.01s，能得到产生实时的效果
 
 
 if __name__ == "__main__":
