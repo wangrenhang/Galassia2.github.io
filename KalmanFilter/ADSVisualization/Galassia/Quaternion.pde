@@ -125,7 +125,7 @@ public PVector mult(PVector v) {
              (2 * y * z + 2 * x * w) * v.y +
              (1 - 2 * x * x - 2 * y * y) * v.z;
 
-    return new PVector(px, py, pz);
+  return new PVector(px, py, pz);
 }
 
 public void normalize(){
