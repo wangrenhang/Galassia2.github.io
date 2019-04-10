@@ -28,7 +28,6 @@ H = np.hstack((x, y, z, -y ** 2, -z ** 2, np.ones([length, 1])))
 w = np.square(x)
 
 (X, residues, rank, shape) = linalg.lstsq(H, w, rcond=None)
-print(residues)
 
 # Offsets
 OSx = X[0] / 2

@@ -17,7 +17,7 @@ String myString = "";
 void setup() {
   size(1000, 1000, P3D);
   cam = new PeasyCam(this, 600);
-  port= new Serial(this, "COM18", 38400);  
+  port= new Serial(this, "COM3", 38400);  
 }
 
 void draw() {
@@ -122,7 +122,7 @@ void draw() {
   PVector sun = new PVector();
   sun.set(250, 0, 0);
   sun = sunrot.mult(sun);
-  println(sqw, sqx, sqy, sqz);
+  //println(sqw, sqx, sqy, sqz);
   sText = createFont("Arial", 20, true);
   textFont(sText, 20);
   fill(255, 255, 0);

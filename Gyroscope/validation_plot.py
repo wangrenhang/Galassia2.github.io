@@ -130,7 +130,8 @@ def getDeviation(dataList, stdList, axis):
     extDev = 0
     length = len(dataList) // 3
     for i in range(length):
-        extErr = extErr + abs(dataList[3*i+int(ord(axis)-ord('x'))] - stdList[3*i+int(ord(axis)-ord('x'))])
+        # extErr = extErr + abs(dataList[3*i+int(ord(axis)-ord('x'))] - stdList[3*i+int(ord(axis)-ord('x'))])
+        extErr = extErr + dataList[3 * i + int(ord(axis) - ord('x'))] - stdList[3 * i + int(ord(axis) - ord('x'))]
         extVar = extVar + (dataList[3*i+int(ord(axis)-ord('x'))] - stdList[3*i+int(ord(axis)-ord('x'))]) ** 2
     extErr = extErr / length
     extVar = extVar / length

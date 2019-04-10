@@ -26,5 +26,4 @@ z = list(z)
 z = np.reshape(z, (len(z), 1))
 H = np.hstack([x, y, z, np.ones((len(x), 1))])
 
-# h = H * [[m], [c]]
 print(linalg.lstsq(H, h, rcond=None)[0])

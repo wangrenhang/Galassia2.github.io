@@ -113,6 +113,7 @@ public Quaternion mult(Quaternion q) {
 
 
 public PVector mult(PVector v) {
+
   float px = (1 - 2 * y * y - 2 * z * z) * v.x +
              (2 * x * y - 2 * z * w) * v.y +
              (2 * x * z + 2 * y * w) * v.z;

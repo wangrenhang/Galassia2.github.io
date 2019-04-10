@@ -180,18 +180,44 @@ for sen in sensor:
         res.append(np.divide(pool, div))
 
     plt.figure()
-    plt.title(sen)
-    plt.plot(seq, res)
+    if sen == "cst":
+        plt.title("Coarse Sun Sensor Temperature")
+        plt.plot(seq, [i[0] for i in res], label='css1')
+        plt.plot(seq, [i[1] for i in res], label='css2')
+        plt.plot(seq, [i[2] for i in res], label='css3')
+        plt.plot(seq, [i[3] for i in res], label='css4')
+    elif sen == "csv":
+        plt.title("Coarse Sun Sensor Voltage")
+        plt.plot(seq, [i[0] for i in res], label='css1')
+        plt.plot(seq, [i[1] for i in res], label='css2')
+        plt.plot(seq, [i[2] for i in res], label='css3')
+        plt.plot(seq, [i[3] for i in res], label='css4')
+    elif sen == "gro":
+        plt.title("Gyroscope")
+        plt.plot(seq, [i[0] for i in res], label='x')
+        plt.plot(seq, [i[1] for i in res], label='y')
+        plt.plot(seq, [i[2] for i in res], label='z')
+    elif sen == "img":
+        plt.title("Internal Magnetometer")
+        plt.plot(seq, [i[0] for i in res], label='x')
+        plt.plot(seq, [i[1] for i in res], label='y')
+        plt.plot(seq, [i[2] for i in res], label='z')
+    elif sen == "emg":
+        plt.title("External Magnetometer")
+        plt.plot(seq, [i[0] for i in res], label='x')
+        plt.plot(seq, [i[1] for i in res], label='y')
+        plt.plot(seq, [i[2] for i in res], label='z')
     print(sen+": "+str(res))
     plt.xlabel("Temperature / ℃")
     if sen == "img" or sen == "emg":
         plt.ylabel("Magnetic Intensity / mG")
     elif sen == "gro":
-        plt.ylabel("Angular velocity / rad/s")
+        plt.ylabel("Angular velocity / °/s")
     elif sen == "cst":
         plt.ylabel("CSS temperature /  ℃")
     elif sen == "csv":
         plt.ylabel("CSS value / V")
+    plt.legend(loc='upper right')
 
 # emg, img processing
 testnum = 0
@@ -268,12 +294,22 @@ print("img: "+str(imgarr))
 print("emg: "+str(emgarr))
 
 plt.figure()
-plt.title("Modified img")
-plt.plot(seq, imgarr)
+plt.title("Modified Internal Magnetometer")
+plt.xlabel("Temperature / ℃")
+plt.ylabel("Magnetic Intensity / mG")
+plt.plot(seq, [i[0] for i in imgarr], label='x')
+plt.plot(seq, [i[1] for i in imgarr], label='y')
+plt.plot(seq, [i[2] for i in imgarr], label='z')
+plt.legend(loc='upper right')
 
 plt.figure()
-plt.title("Modified emg")
-plt.plot(seq, emgarr)
+plt.title("Modified External Magnetometer")
+plt.xlabel("Temperature / ℃")
+plt.ylabel("Magnetic Intensity / mG")
+plt.plot(seq, [i[0] for i in emgarr], label='x')
+plt.plot(seq, [i[1] for i in emgarr], label='y')
+plt.plot(seq, [i[2] for i in emgarr], label='z')
+plt.legend(loc='upper right')
 
 plt.show()
 
